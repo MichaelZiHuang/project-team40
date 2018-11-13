@@ -6,13 +6,14 @@ public class Square {
 	private int row;
     private char column;
     private boolean captain;
-
+	private boolean submerged;
 	public Square() {}
 
 	public Square(int row, char column) {
 		this.row = row;
 		this.column = column;
 		this.captain = false;
+		this.submerged = false;
 	}
 
 	public char getColumn() {
@@ -35,6 +36,10 @@ public class Square {
 	public boolean getCaptain() {
 		return captain;
 	}
+
+	public void setSubmerged(boolean submerged){this.submerged = submerged;}
+
+	public boolean getSubmerged(){return submerged;}
 
 	public int getRow() {
 		return row;

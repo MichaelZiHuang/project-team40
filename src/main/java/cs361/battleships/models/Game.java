@@ -16,6 +16,10 @@ public class Game {
     public boolean placeShip(Ship ship, int x, char y, boolean isVertical) {
         Ship s2;
         switch(ship.getShipType()) {
+            case "SUBMARINE":
+                ship = new Submarine();
+                s2 = new Submarine();
+                break;
             case "BATTLESHIP":
                 ship = new Battleship();
                 s2 = new Battleship();
@@ -28,6 +32,7 @@ public class Game {
                 ship = new Minesweeper();
                 s2 = new Minesweeper();
                 break;
+
             default:
                 return false;
         }

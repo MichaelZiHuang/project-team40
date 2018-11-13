@@ -11,7 +11,7 @@ public class Ship {
     int length;
     boolean armor;
     String shipType;
-
+    boolean isSubmerged;
 	@JsonProperty private List<Square> occupiedSquares;
 
 	public Ship(){
@@ -23,6 +23,7 @@ public class Ship {
         shipType = kind;
 		occupiedSquares = new ArrayList<>();
 		armor = false;
+		isSubmerged = false;
 	}
 
 	public List<Square> getOccupiedSquares() {
@@ -38,6 +39,9 @@ public class Ship {
     public String getShipType() {
 	    return shipType;
     }
+
+    public void setSubmerged(boolean isSubmerged){ this.isSubmerged = isSubmerged;}
+    public boolean getSubmerged(){return isSubmerged;}
 
     public void decrementHealth() {
         health--;
