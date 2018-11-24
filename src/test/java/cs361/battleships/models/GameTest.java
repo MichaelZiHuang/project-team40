@@ -20,15 +20,15 @@ public class GameTest {
     public void testBadplaceship(){ //
         String shipname = "BATTLESHIP";
         Ship shippy = new Ship(shipname);
-        assertEquals(false,testgame.placeShip(shippy, 12, 'A', true));
+        assertEquals(false,testgame.placeShip(shippy, 12, 'A', true, false));
     }
 
     @Test
     public void testGoodplaceship(){
         Ship shipper1 = new Ship("BATTLESHIP");
         Ship shipper2 = new Ship("DESTROYER");
-        assertEquals(true, gametwo.placeShip(shipper1, 5, 'A', true));
-        assertEquals(true, gametwo.placeShip(shipper2, 1, 'A', true));
+        assertEquals(true, gametwo.placeShip(shipper1, 5, 'A', true, false));
+        assertEquals(true, gametwo.placeShip(shipper2, 1, 'A', true, false));
     }
 
     @Test
@@ -63,7 +63,7 @@ public class GameTest {
         Ship s = new Ship("DESTROYER");
 
         // attempt to place the ship
-        assertTrue(g.placeShip(s,1,'A',false));
+        assertTrue(g.placeShip(s,1,'A',false, false));
 
         // attack the space with this ship now
         assertTrue(g.attack(1,'A'));
@@ -76,7 +76,7 @@ public class GameTest {
     @Test
     public void testPlayerAndBotShipsIndependent() {
         Game g = new Game();
-        g.placeShip(new Ship("MINESWEEPER"), 5,'B',true);
+        g.placeShip(new Ship("MINESWEEPER"), 5,'B',true, false);
 
         // get the player's ship
         Board b1 = g.getPlayersBoard();

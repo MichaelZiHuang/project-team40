@@ -32,7 +32,7 @@ public class PlaceUtility {
 
                     // add square to ship
                     shipsquares.add(board.getSquare(xint+i,yint));
-                    //board.getSquare(xint+i, yint).ships.add(ship);
+                    board.getSquare(xint+i, yint).ships.add(ship);
 
                 }
                 else return false;
@@ -44,7 +44,7 @@ public class PlaceUtility {
 
                     // add square to ship
                     shipsquares.add(board.getSquare(xint,yint+i));
-                    //board.getSquare(xint, yint+i).ships.add(ship);
+                    board.getSquare(xint, yint+i).ships.add(ship);
                 }
                 else return false;
             }

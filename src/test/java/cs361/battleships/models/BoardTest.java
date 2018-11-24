@@ -22,32 +22,32 @@ public class BoardTest {
     @Test
     public void testInvalidPlacement() {
         Board board = new Board();
-        assertFalse(board.placeShip(new Minesweeper(), 11, 'C', true));
-        assertFalse(board.placeShip(new Minesweeper(), 6, 'J', false));
+        assertFalse(board.placeShip(new Minesweeper(), 11, 'C', true, false));
+        assertFalse(board.placeShip(new Minesweeper(), 6, 'J', false, false));
     }
     @Test
     public void testPartialInvalidPlacement() { //tests if the ship will be rejected if it hangs off the edge
         Board board = new Board();
-        assertFalse(board.placeShip(new Minesweeper(), 10, 'J', true));
-        assertFalse(board.placeShip(new Minesweeper(), 6, 'J', false));
+        assertFalse(board.placeShip(new Minesweeper(), 10, 'J', true, false));
+        assertFalse(board.placeShip(new Minesweeper(), 6, 'J', false, false));
     }
     @Test
     public void testNormalPlacement() {
         Board board = new Board();
-        assertTrue(board.placeShip(new Minesweeper(), 6, 'D', false));
+        assertTrue(board.placeShip(new Minesweeper(), 6, 'D', false, false));
     }
     @Test
     public void testOverlapPlacement() {
         Board board = new Board();
-        assertTrue(board.placeShip(new Minesweeper(), 6, 'D', false));
-        assertFalse(board.placeShip(new Destroyer(), 6, 'E', false));
+        assertTrue(board.placeShip(new Minesweeper(), 6, 'D', false, false));
+        assertFalse(board.placeShip(new Destroyer(), 6, 'E', false, false));
     }
     @Test
     public void testShipTypes() {
         Board board = new Board();
-        assertTrue(board.placeShip(new Minesweeper(), 1, 'A', false));
-        assertTrue(board.placeShip(new Destroyer(), 2, 'A', false));
-        assertTrue(board.placeShip(new Battleship(), 3, 'A', false));
+        assertTrue(board.placeShip(new Minesweeper(), 1, 'A', false, false));
+        assertTrue(board.placeShip(new Destroyer(), 2, 'A', false, false));
+        assertTrue(board.placeShip(new Battleship(), 3, 'A', false, false));
     }
 
     @Test
@@ -79,14 +79,15 @@ public class BoardTest {
         // Tests adding a duplicate ship, which should return false
         Board b = new Board();
         // setup initial ships
-        assertTrue(b.placeShip(new Minesweeper(), 1, 'A', false));
-        assertTrue(b.placeShip(new Destroyer(), 2, 'A', false));
-        assertTrue(b.placeShip(new Battleship(), 3, 'A', false));
-
+        assertTrue(b.placeShip(new Minesweeper(), 1, 'A', false, false));
+        assertTrue(b.placeShip(new Destroyer(), 2, 'A', false, false));
+        assertTrue(b.placeShip(new Battleship(), 3, 'A', false, false));
+        assertTrue(b.placeShip(new Submarine(), 4, 'A', false, false));
         // test duplicating them, should all return false
-        assertFalse(b.placeShip(new Minesweeper(), 4, 'A', false));
-        assertFalse(b.placeShip(new Destroyer(), 5, 'A', false));
-        assertFalse(b.placeShip(new Battleship(), 6, 'A', false));
+        assertFalse(b.placeShip(new Minesweeper(), 4, 'A', false, false));
+        assertFalse(b.placeShip(new Destroyer(), 5, 'A', false, false));
+        assertFalse(b.placeShip(new Battleship(), 6, 'A', false, false));
+        assertFalse(b.placeShip(new Submarine(), 7, 'A', false, false));
     }
 
     @Test
