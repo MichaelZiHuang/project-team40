@@ -6,7 +6,7 @@ import java.util.List;
 public class Board {
     private Square[][] boardarray;
     private boolean[][] occupied;
-
+	//private int[][] occupied;
     private boolean sonarEnabled;
     private int sonarCount;
 
@@ -24,12 +24,13 @@ public class Board {
 	public Board() {
 		boardarray = new Square[BOARDSIZE_X][BOARDSIZE_Y];
 		occupied = new boolean[BOARDSIZE_X][BOARDSIZE_Y];
-
+		//occupied = new int[BOARDSIZE_X][BOARDSIZE_Y];
 		for (int i = 0; i < boardarray.length; i++) {
             for (int j = 0; j < boardarray[0].length; j++) {
                 //sets row values as 1 thru BOARDSIZE_X and column values as 'A' thru 'J'
                 boardarray[i][j] = new Square(i+1,(char) (65 + j));
                 occupied[i][j] = false;
+				//occupied[i][j] = 0;
             }
         }
         ships = new ArrayList<>();
@@ -55,18 +56,22 @@ public class Board {
 	public boolean isOccupied(int x, int y) {
 		return occupied[x][y];
 	}
-
+	/*public int isOccupied(int x, int y) {
+		return occupied[x][y];
+	}*/
 	public Square getSquare(int x, int y) {
 		return boardarray[x][y];
 	}
 
-
+	//public void addShiptoSquare(int x, int y){
+	//	boardarray[x][y].
+	//}
 	/*
 	DO NOT change the signature of this method. It is used by the grading scripts.
 	 */
-	public boolean placeShip(Ship ship, int x, char y, boolean isVertical) {
+	public boolean placeShip(Ship ship, int x, char y, boolean isVertical, boolean isSubmerged) {
 		setOccupied();
-		return PlaceUtility.place(this, ship, x, y, isVertical);
+		return PlaceUtility.place(this, ship, x, y, isVertical, isSubmerged);
 	}
 
 
@@ -132,6 +137,7 @@ public class Board {
 		for (int i = 0; i < ships.size(); i++){
 			List <Square> shipSquares = ships.get(i).getOccupiedSquares();
 			for (int j = 0; j < shipSquares.size(); j++){
+
 				occupied[shipSquares.get(j).getRow()-1][shipSquares.get(j).getColumn()-65] = true;
 			}
 		}

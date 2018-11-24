@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class PlaceUtility {
 
-    public static boolean place(Board board, Ship ship, int x, char y, boolean isVertical) {
+    public static boolean place(Board board, Ship ship, int x, char y, boolean isVertical, boolean Submerged) {
         // check for duplicate ships first
         if(is_duplicate_ship(ship, board.getShips())) {
             // can't place the same ship twice
@@ -32,6 +32,8 @@ public class PlaceUtility {
 
                     // add square to ship
                     shipsquares.add(board.getSquare(xint+i,yint));
+                    //board.getSquare(xint+i, yint).ships.add(ship);
+
                 }
                 else return false;
             } else {   //check if the values exist within the array bounds, and make sure that the square isn't occupied
@@ -42,6 +44,7 @@ public class PlaceUtility {
 
                     // add square to ship
                     shipsquares.add(board.getSquare(xint,yint+i));
+                    //board.getSquare(xint, yint+i).ships.add(ship);
                 }
                 else return false;
             }

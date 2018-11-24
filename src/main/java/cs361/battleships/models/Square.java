@@ -1,5 +1,8 @@
 package cs361.battleships.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SuppressWarnings("unused")
 public class Square {
 
@@ -7,6 +10,7 @@ public class Square {
     private char column;
     private boolean captain;
 	private boolean submerged;
+	public List<Ship> ships;
 	public Square() {}
 
 	public Square(int row, char column) {
@@ -14,6 +18,7 @@ public class Square {
 		this.column = column;
 		this.captain = false;
 		this.submerged = false;
+		ships = new ArrayList<>();
 	}
 
 	public char getColumn() {
